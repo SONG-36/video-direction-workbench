@@ -471,8 +471,16 @@ Stage 1：商品事实与研究输入
 - N02 ResearchTask
 - N03 SearchPlan
 
-当前只允许开始：
-- N01 ProductBrief
+当前真实状态：
+- N01A ProductBrief 已完成
+- 当前允许并行准备和实现三条线：
+  - Track A: N02A ResearchTask Domain Contract
+  - Track B: K-P0 Knowledge Catalog
+  - Track C: SIG-P0 Market Signal Tool
+- 三条线必须分别评审、分别测试、分别提交
+- N02A 不得实现 K-P0/SIG-P0/N03
+- K-P0 不得修改 N02A 代码
+- SIG-P0 不得自动修改 ResearchTask
 ```
 
 ### N01A-1：基础领域模型
@@ -568,7 +576,7 @@ Andy：
 业务输出：
 
 ```text
-sample_data/products/car_vacuum.product_brief.json
+sample_data/products/car_vacuum_yd_592c.product_brief.json
 ```
 
 要求：
@@ -593,6 +601,296 @@ Andy：
 - 与 GPT 围绕 Mermaid 讨论对象、关系和边界。
 - 完成一个小型验证。
 - 决定是否批准。
+
+### N02A ResearchTask Domain Contract
+
+当前切片目标：
+
+N02A 只实现 `ResearchTask` Domain Contract。它用于在 `ProductBrief` 商品事实边界下，由人工定义一轮 TikTok 内容研究任务。
+
+N02A 应包含的业务对象：
+
+- `ProductBriefReference`
+- `ResearchBasis`
+- `ResearchIntent`
+- `ResearchScope`
+- `AudienceAndScenarioFrame`
+- `ContentReferenceFrame`
+- `ResearchLensSelection`
+- `ResearchQuestion`
+- `ExclusionRule`
+- `ResearchTask`
+
+对象业务含义：
+
+- `ProductBriefReference`：只保存 `product_id`、`product_name`、`revision`，用于绑定 `ProductBrief` revision。不得复制 `ProductBrief` 的 `sources`、`confirmed_facts`、`unknown_items`、`prohibited_claims`。
+- `ResearchBasis`：记录本轮研究任务的选择依据。用于说明为什么选择某些人群、场景、痛点、参考产品范围、研究视角和研究问题。当前可以由人工判断、默认假设或 MarketSignalReport P0 引用填写。当前 N02A 不实现数据采集、统计分析或自动推荐。字段包括 `basis_type`、`summary`、`knowledge_refs`、`supporting_signal_refs`、`limitations`。
+- `ResearchIntent`：说明本轮研究服务什么业务动作，例如 `reference_video_search`、`content_direction_discovery`、`hook_and_scene_discovery`。
+- `ResearchScope`：定义 `platform`、`content_surface`、`market`、`language`、`time_window`、`target_sample_count`。
+- `AudienceAndScenarioFrame`：定义 `primary_audience`、`secondary_audiences`、`use_scenarios`、`pain_points`。它表达本轮研究观察的人群与场景假设，不是已验证目标用户结论，也不是购买人群统计结果。如果有 MarketSignalReport P0 支撑，应通过 `ResearchBasis.supporting_signal_refs` 引用，不得复制完整报告内容。
+- `ContentReferenceFrame`：定义 `direct_reference_products`、`adjacent_reference_products`、`reference_video_types`。
+- `ResearchLensSelection`：定义本轮选择哪些运营研究视角，例如 `problem_amplification`、`before_after_transformation`、`satisfying_cleaning`、`trust_through_demonstration`。当前只作为任务字段，不实现知识库查询或管理。
+- `ResearchQuestion`：定义本轮研究要回答的内容问题。
+- `ExclusionRule`：定义必须排除的视频、产品类型、表达方式或风险内容。
+- `ResearchTask`：聚合以上对象，形成一轮内容研究任务合同。
+
+`ProductBrief` 到 `ResearchTask` 的关系：
+
+- `ProductBrief` 提供商品事实边界。
+- 人工提供运营研究意图。
+- K-P0 通过 `knowledge_refs` 提供研究视角、平台规则、创意操作符和案例引用口径。
+- SIG-P0 通过 MarketSignalReport P0 提供市场内容信号。
+- `ResearchBasis` 记录选择依据、知识引用、信号引用和局限性。
+- `ResearchTask` 固化本轮内容研究任务。
+- `ResearchTask` 可以引用 `ProductBrief`，但不得修改 `ProductBrief`。
+- `ResearchTask` 不得复制 `ProductBrief` 的事实、未知项、禁止声称和来源列表。
+- `ResearchTask` 不得复制完整知识库条目或完整 MarketSignalReport。
+- `ResearchTask` 应绑定 `ProductBrief` 的 `product_id`、`product_name`、`revision`。
+
+创意能力边界：
+
+当前系统未来可以通过研究视角库、创意操作符库、案例库和人工评审提升创意发散能力。
+
+N02A 不实现创意生成。N02A 只记录本轮研究选择了哪些研究视角。
+
+视频方向创意应发生在 N11。脚本创意应发生在 N13。
+
+K03/K04 已纳入架构支撑层；当前 Track A N02A 不实现 K03/K04，Track B K-P0 可以设计其字段和引用格式，后续接入 N11/N13 需另行批准。
+
+## Parallel Development Tracks
+
+当前允许并行推进三条线。
+
+### Track A: N02A ResearchTask Domain Contract
+
+目标：实现 `ResearchTask` 领域合同，用 `ProductBrief` 创建一轮内容研究任务。
+
+允许：
+
+- `ProductBriefReference`
+- `ResearchBasis`
+- `ResearchIntent`
+- `ResearchScope`
+- `AudienceAndScenarioFrame`
+- `ContentReferenceFrame`
+- `ResearchLensSelection`
+- `ResearchQuestion`
+- `ExclusionRule`
+- `ResearchTask`
+- 一个真实 `ProductBrief` 到 `ResearchTask` 的最小样例验证
+
+禁止：
+
+- Scrape Creators API
+- 市场数据采集
+- 统计分析
+- 自动推荐
+- `SearchPlan`
+- 视频抓取
+- 视频分析
+- 创意方向
+- 脚本
+
+### Track B: K-P0 Knowledge Catalog
+
+目标：建立版本化知识库目录和稳定知识 ID，为 N02A、SIG-P0、N03、N11、N13、N18 提供统一标签和解释口径。
+
+覆盖：
+
+- K01 Research Lens Catalog
+- K02 Platform & Content Rules Library
+- K03 Creative Operator Library
+- K04 Success / Failure Case Library
+
+当前允许：
+
+- 设计知识项字段
+- 设计 knowledge_ref 格式
+- 设计最小 YAML / Markdown 文件结构
+- 设计标签体系
+- 设计版本规则
+- 设计人工批准规则
+
+当前禁止：
+
+- 数据库
+- UI
+- 自动学习
+- 自动覆盖正式知识库
+- 自动生成创意脚本
+- 替代 ProductBrief 商品事实边界
+
+### Track C: SIG-P0 Market Signal Tool
+
+目标：做一个可以真实服务日常运营的市场内容信号工具，优先支持 Scrape Creators 或其导出数据。
+
+允许：
+
+- 开发者脚本或实验入口
+- Scrape Creators API adapter 或导出数据读取器
+- raw response 保存
+- normalized video signal 输出
+- 去重
+- 基础字段标准化
+- 简单规则分类 audience/scenario/pain_point/content_type
+- 基础统计
+- MarketSignalReport P0 输出
+- limitations 输出
+
+禁止：
+
+- 自动修改 `ResearchTask`
+- 自动批准 `primary_audience` / `secondary_audiences` / `selected_lenses`
+- 自动生成正式 `SearchPlan`
+- 自动生成创意方向或脚本
+- 数据库
+- 正式 UI
+- 正式产品化 CLI
+- 将公开视频数据解释为真实购买人群或真实转化结论
+
+## Cross-Track Interface Rules
+
+- K-P0 输出 `knowledge_refs`。
+- SIG-P0 输出 `MarketSignalReport P0`。
+- N02A 的 `ResearchBasis` 引用 `knowledge_refs` 和 `supporting_signal_refs`。
+- N02A 不复制完整知识库内容或完整市场信号报告。
+- SIG-P0 可以读取 K-P0 的标签定义，但不得修改 K-P0。
+- N18 才负责受控更新 K-P0 和信号解释规则。
+- 所有跨轨引用必须包含 version 或 report_id。
+
+## Signal Evidence Boundaries
+
+L1 Content Supply Signals：公开视频数量、关键词覆盖、场景分布、内容供给密度。
+
+L2 Content Performance Signals：播放、点赞、评论、分享、发布时间、互动率、播放速度等。
+
+L3 Commercial Conversion Signals：点击、加购、成交、达人带货、TikTok Shop 商品表现、广告转化。
+
+L4 Own Business Validation Signals：自有账号发布后的播放、停留、完播、点击、加购、成交、评论和复盘判断。
+
+SIG-P0 当前主要覆盖 L1/L2。L3/L4 是未来扩展。不得把相关性解释为因果。
+
+## SIG-P0 Market Signal Smoke Tool Boundary
+
+SIG-P0 最小输入：
+
+- provider
+- platform
+- market
+- language
+- time_window
+- queries
+- limit_per_query
+
+SIG-P0 最小处理：
+
+- 调用 Scrape Creators 或读取导出数据
+- 保存 raw JSON
+- 标准化视频字段
+- 去重
+- 粗分类人群语境、使用场景、痛点表达、内容形式
+- 计算基础统计
+- 输出 MarketSignalReport P0
+
+SIG-P0 最小输出：
+
+- raw data path
+- normalized data path
+- report_id
+- generated_at
+- source_queries
+- sample_size
+- unique_video_count
+- scenario_tag_counts
+- audience_context_counts
+- pain_point_counts
+- content_type_counts
+- basic_performance_summary
+- dirty_sample_notes
+- limitations
+
+数据解释边界：
+
+- Scrape Creators 等公开视频数据可以说明内容供给和表现信号。
+- 它不能单独证明真实购买人群、真实转化率或某个创意一定成功。
+- 指标必须记录时间范围、查询词、样本量、去重方式和偏差说明。
+- 不得把统计相关性伪装成因果结论。
+- 市场信号报告只能辅助 `ResearchBasis`，不能替代人工决策。
+
+### Track A N02A 当前明确不做
+
+- 不做 N01A 重构。
+- 不做 N01B 输入/保存工具。
+- 不做 N01C AI 辅助整理。
+- 不做前端界面。
+- 不做 CLI。
+- 不做数据库。
+- 不做 AI 生成。
+- 不做知识库管理功能。
+- 不做 Scrape Creators API。
+- 不做 MarketSignalReport 代码。
+- 不做市场数据采集。
+- 不做统计分析。
+- 不做自动推荐。
+- 不做 dashboard。
+- 不做搜索策略。
+- 不抓取视频。
+- 不分析视频。
+- 不生成创意方向。
+- 不生成脚本。
+- 不创建 `ResearchResult`。
+- 不提前进入 N03。
+- 不修改 sample `ProductBrief` 的事实内容。
+
+### SIG-P0 不做
+
+- ProductBrief 重构。
+- ResearchTask 自动修改。
+- 自动批准研究任务。
+- 正式 UI。
+- 正式产品化 CLI。
+- 数据库。
+- SearchPlan 正式生成。
+- 视频结构化分析。
+- 创意方向。
+- 脚本生成。
+- 自动更新知识库。
+
+Visual Review-Driven Implementation 要求：
+
+未来实现 N02A 代码时，必须输出：
+
+- 真实业务 Mermaid。
+- 四段解释：
+  1. 新增了什么业务对象？
+  2. 它和已有对象是什么关系？
+  3. 代码、AI、人工分别负责什么？
+  4. 当前系统能保证什么，不能保证什么？
+- 只做一个最小验证。
+
+当前 N02A 最小验证方向：
+
+使用现有真实样例：
+
+```text
+sample_data/products/car_vacuum_yd_592c.product_brief.json
+```
+
+创建一个 TikTok US 内容研究任务样例，验证：
+
+- `ProductBrief` 能正常加载。
+- `ResearchTask` 能从 `ProductBrief` 创建。
+- `ProductBriefReference` 的 `product_id`、`product_name`、`revision` 与 `ProductBrief` 一致。
+- `ResearchTask` 包含 `ResearchBasis`。
+- `ResearchBasis` 可以使用 `basis_type=human_judgement`、`default_assumption`、`market_signal_supported` 或 `mixed`。
+- `ResearchBasis.knowledge_refs` 可以引用 K01/K02 中的研究视角和平台规则。
+- `ResearchBasis.supporting_signal_refs` 当前可以为空列表，也可以引用一个外部 MarketSignalReport P0 ID。
+- `ResearchBasis.limitations` 必须说明当前依据限制。
+- `ResearchTask` 包含平台、市场、语言、内容面、人群场景、参考产品范围、研究视角、排除规则和研究问题。
+- `AudienceAndScenarioFrame` 被视为研究观察假设，不是已验证购买人群结论。
+- 创建 `ResearchTask` 不改变 `ProductBrief` 中 `sources`、`confirmed_facts`、`unknown_items`、`prohibited_claims` 的数量。
+
+注意：这里只写计划，不写代码。
 
 ### N01B：人工构建与保存
 
@@ -658,11 +956,11 @@ Andy：
 
 ### N02：ResearchTask
 
-目标：在 N01 人工批准后，定义研究平台、市场、样本范围和本轮业务问题。
+目标：在 N01 人工批准后，定义内容研究任务合同，包括研究目的、平台、市场、语言、内容面、人群场景、参考产品范围、研究视角、排除规则和本轮业务问题。
 
 ### N03：SearchPlan
 
-目标：基于已批准商品事实和研究任务，形成覆盖产品、场景、痛点和内容形式的搜索计划。
+目标：基于已批准商品事实和研究任务，形成覆盖产品、场景、痛点、竞品、相邻产品、内容形式、排除词和搜索组合的搜索计划。
 
 ## 9. Scope Discipline
 
