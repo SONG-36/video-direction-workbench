@@ -1,8 +1,25 @@
 """Foundational domain models for N01 product facts."""
 
 from enum import StrEnum
+from typing import Self
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+
+
+def _normalize_statement(value: str) -> str:
+    """Normalize statement text only for deterministic duplicate checks."""
+
+    return " ".join(value.strip().split()).casefold()
+
+
+def _ensure_unique_values(values: list[str], label: str) -> None:
+    """Reject duplicate values while keeping the original source objects unchanged."""
+
+    seen: set[str] = set()
+    for value in values:
+        if value in seen:
+            raise ValueError(f"{label} must be unique: {value}")
+        seen.add(value)
 
 
 class SourceType(StrEnum):
@@ -171,3 +188,99 @@ class ProhibitedClaim(BaseModel):
             cleaned_values.append(cleaned)
 
         return cleaned_values
+
+
+class ProductBrief(BaseModel):
+    """N01 商品事实卡总容器。
+
+    ProductBrief 聚合证据来源、已确认事实、未知问题和禁止声称，并执行跨对象引用与冲突校验。
+    它只能证明结构与引用关系合法，不能证明来源内容真的支持某条事实。
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    product_id: str
+    product_name: str
+    revision: int = Field(default=1, ge=1)
+    sources: list[SourceReference] = Field(default_factory=list)
+    confirmed_facts: list[ConfirmedFact] = Field(default_factory=list)
+    unknown_items: list[UnknownItem] = Field(default_factory=list)
+    prohibited_claims: list[ProhibitedClaim] = Field(default_factory=list)
+    notes: str | None = None
+
+    @field_validator("product_id", "product_name")
+    @classmethod
+    def validate_required_text(cls, value: str) -> str:
+        cleaned = value.strip()
+        if not cleaned:
+            raise ValueError("text must not be blank")
+        return cleaned
+
+    @field_validator("notes")
+    @classmethod
+    def validate_optional_notes(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+
+        cleaned = value.strip()
+        if not cleaned:
+            return None
+        return cleaned
+
+    @model_validator(mode="after")
+    def validate_cross_object_rules(self) -> Self:
+        source_ids = [source.source_id for source in self.sources]
+        existing_source_ids = set(source_ids)
+
+        _ensure_unique_values(source_ids, "sources.source_id")
+        _ensure_unique_values(
+            [fact.fact_id for fact in self.confirmed_facts],
+            "confirmed_facts.fact_id",
+        )
+        _ensure_unique_values(
+            [item.item_id for item in self.unknown_items],
+            "unknown_items.item_id",
+        )
+        _ensure_unique_values(
+            [claim.claim_id for claim in self.prohibited_claims],
+            "prohibited_claims.claim_id",
+        )
+
+        for fact in self.confirmed_facts:
+            for source_id in fact.source_ids:
+                if source_id not in existing_source_ids:
+                    raise ValueError(
+                        "confirmed_facts.source_ids must reference existing "
+                        f"sources.source_id: {source_id}"
+                    )
+
+        for claim in self.prohibited_claims:
+            for source_id in claim.source_ids:
+                if source_id not in existing_source_ids:
+                    raise ValueError(
+                        "prohibited_claims.source_ids must reference existing "
+                        f"sources.source_id: {source_id}"
+                    )
+
+        confirmed_statements: set[str] = set()
+        for fact in self.confirmed_facts:
+            normalized = _normalize_statement(fact.statement)
+            if normalized in confirmed_statements:
+                raise ValueError("confirmed_facts.statement must be unique")
+            confirmed_statements.add(normalized)
+
+        prohibited_statements: set[str] = set()
+        for claim in self.prohibited_claims:
+            normalized = _normalize_statement(claim.statement)
+            if normalized in prohibited_statements:
+                raise ValueError("prohibited_claims.statement must be unique")
+            prohibited_statements.add(normalized)
+
+        conflicts = confirmed_statements & prohibited_statements
+        if conflicts:
+            raise ValueError(
+                "confirmed_facts.statement and prohibited_claims.statement "
+                "must not conflict"
+            )
+
+        return self

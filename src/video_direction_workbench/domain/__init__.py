@@ -3,6 +3,7 @@
 from video_direction_workbench.domain.product_brief import (
     ConfirmedFact,
     FactCategory,
+    ProductBrief,
     ProhibitedClaim,
     SourceReference,
     SourceType,
@@ -12,6 +13,7 @@ from video_direction_workbench.domain.product_brief import (
 __all__ = [
     "ConfirmedFact",
     "FactCategory",
+    "ProductBrief",
     "ProhibitedClaim",
     "SourceReference",
     "SourceType",
