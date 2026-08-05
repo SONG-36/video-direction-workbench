@@ -1,0 +1,270 @@
+{
+  "product_id": "car_vacuum_yd_592c",
+  "product_name": "车载无线吸尘器",
+  "revision": 1,
+  "sources": [
+    {
+      "source_id": "product_image_001",
+      "source_type": "product_image",
+      "title": "车载无线吸尘器产品主图",
+      "locator": "0330fec58a3d916a3b180e7eda3043ec.png"
+    },
+    {
+      "source_id": "product_text_001",
+      "source_type": "operator_input",
+      "title": "用户提供的商品描述文本"
+    },
+    {
+      "source_id": "spec_image_001",
+      "source_type": "specification",
+      "title": "YD-592C 供应商参数图"
+    },
+    {
+      "source_id": "operator_confirm_001",
+      "source_type": "operator_input",
+      "title": "用户人工确认信息",
+      "note": "参数图属于当前SKU；YD-592C为供应商型号；对外续航口径为15分钟"
+    }
+  ],
+  "confirmed_facts": [
+    {
+      "fact_id": "fact_product_name_001",
+      "category": "basic_information",
+      "statement": "商品名称为车载无线吸尘器",
+      "source_ids": ["product_text_001"]
+    },
+    {
+      "fact_id": "fact_product_category_001",
+      "category": "basic_information",
+      "statement": "商品类目为汽车用品",
+      "source_ids": ["product_text_001"]
+    },
+    {
+      "fact_id": "fact_supplier_model_001",
+      "category": "basic_information",
+      "statement": "YD-592C 是供应商型号",
+      "source_ids": ["spec_image_001", "operator_confirm_001"]
+    },
+    {
+      "fact_id": "fact_function_vacuum_001",
+      "category": "function",
+      "statement": "支持吸尘",
+      "source_ids": ["product_text_001"]
+    },
+    {
+      "fact_id": "fact_function_blowing_001",
+      "category": "function",
+      "statement": "支持吹气",
+      "source_ids": ["product_text_001"]
+    },
+    {
+      "fact_id": "fact_scene_seat_surface_001",
+      "category": "usage_scenario",
+      "statement": "可用于车内座椅表面清理",
+      "source_ids": ["product_text_001"]
+    },
+    {
+      "fact_id": "fact_scene_seat_gap_001",
+      "category": "usage_scenario",
+      "statement": "可用于座椅缝隙清理",
+      "source_ids": ["product_text_001"]
+    },
+    {
+      "fact_id": "fact_scene_cup_holder_001",
+      "category": "usage_scenario",
+      "statement": "可用于杯架清理",
+      "source_ids": ["product_text_001"]
+    },
+    {
+      "fact_id": "fact_scene_floor_mat_001",
+      "category": "usage_scenario",
+      "statement": "可用于脚垫清理",
+      "source_ids": ["product_text_001"]
+    },
+    {
+      "fact_id": "fact_scene_desktop_001",
+      "category": "usage_scenario",
+      "statement": "可用于桌面清理",
+      "source_ids": ["product_text_001"]
+    },
+    {
+      "fact_id": "fact_scene_blowing_narrow_area_001",
+      "category": "usage_scenario",
+      "statement": "可通过吹气功能清理部分狭窄位置或吹走轻质灰尘",
+      "source_ids": ["product_text_001"]
+    },
+    {
+      "fact_id": "fact_accessory_extension_tube_001",
+      "category": "accessory",
+      "statement": "包含延长管",
+      "source_ids": ["product_text_001"]
+    },
+    {
+      "fact_id": "fact_accessory_brush_head_001",
+      "category": "accessory",
+      "statement": "包含毛刷头",
+      "source_ids": ["product_text_001"]
+    },
+    {
+      "fact_id": "fact_accessory_flat_nozzle_001",
+      "category": "accessory",
+      "statement": "包含扁嘴头",
+      "source_ids": ["product_text_001"]
+    },
+    {
+      "fact_id": "fact_accessory_charging_cable_001",
+      "category": "accessory",
+      "statement": "包含充电线",
+      "source_ids": ["product_text_001"]
+    },
+    {
+      "fact_id": "fact_level_1_specs_001",
+      "category": "parameter",
+      "statement": "第一档真空度为 10000Pa，功率为 40W，满电后可使用约 30 分钟",
+      "source_ids": ["spec_image_001"]
+    },
+    {
+      "fact_id": "fact_level_2_specs_001",
+      "category": "parameter",
+      "statement": "第二档真空度为 14000Pa，功率为 70W，满电后可使用约 17 分钟",
+      "source_ids": ["spec_image_001"]
+    },
+    {
+      "fact_id": "fact_level_3_specs_001",
+      "category": "parameter",
+      "statement": "第三档真空度为 17000Pa，功率为 100W，满电后可使用约 12 分钟",
+      "source_ids": ["spec_image_001"]
+    },
+    {
+      "fact_id": "fact_public_runtime_001",
+      "category": "parameter",
+      "statement": "对外续航口径为 15 分钟",
+      "source_ids": ["operator_confirm_001"]
+    },
+    {
+      "fact_id": "fact_motor_001",
+      "category": "parameter",
+      "statement": "电机为 brushless motor",
+      "source_ids": ["spec_image_001"]
+    },
+    {
+      "fact_id": "fact_battery_001",
+      "category": "parameter",
+      "statement": "电池为 3pcs × 2000mAh lithium big battery",
+      "source_ids": ["spec_image_001"]
+    },
+    {
+      "fact_id": "fact_voltage_001",
+      "category": "parameter",
+      "statement": "电压为 11.1V",
+      "source_ids": ["spec_image_001"]
+    },
+    {
+      "fact_id": "fact_filter_001",
+      "category": "parameter",
+      "statement": "滤芯为 Metal HEPA Filter",
+      "source_ids": ["spec_image_001"]
+    },
+    {
+      "fact_id": "fact_type_c_usb_cable_001",
+      "category": "accessory",
+      "statement": "充电线为 Extra USB charger cord，Type-C",
+      "source_ids": ["spec_image_001"]
+    },
+    {
+      "fact_id": "fact_nozzle_count_001",
+      "category": "accessory",
+      "statement": "参数图标注含 8 种吸尘和吹气嘴",
+      "source_ids": ["spec_image_001"]
+    },
+    {
+      "fact_id": "fact_appearance_constraint_001",
+      "category": "appearance_constraint",
+      "statement": "产品外观以主图为准，不得擅自改变外观比例、按钮位置和接口",
+      "source_ids": ["product_image_001"]
+    }
+  ],
+  "unknown_items": [
+    {
+      "item_id": "unknown_dimensions_001",
+      "category": "parameter",
+      "question": "产品尺寸当前无法确认",
+      "impact": "不能在视频脚本或商品表达中使用具体尺寸"
+    },
+    {
+      "item_id": "unknown_weight_001",
+      "category": "parameter",
+      "question": "产品重量当前无法确认",
+      "impact": "不能在视频脚本或商品表达中使用具体重量"
+    },
+    {
+      "item_id": "unknown_charging_time_001",
+      "category": "parameter",
+      "question": "充电时间当前无法确认",
+      "impact": "不能在视频脚本或商品表达中使用具体充电时长"
+    },
+    {
+      "item_id": "unknown_nozzle_names_001",
+      "category": "accessory",
+      "question": "8 种吸尘和吹气嘴的具体名称当前无法确认",
+      "impact": "不能明确列出 8 种吸嘴或吹嘴的具体名称"
+    },
+    {
+      "item_id": "unknown_nozzle_package_combination_001",
+      "category": "accessory",
+      "question": "实际包装中 8 种吸嘴/吹嘴的完整组合当前无法确认",
+      "impact": "配件组合表达必须以实际包装和说明书为准"
+    }
+  ],
+  "prohibited_claims": [
+    {
+      "claim_id": "claim_suction_over_17000pa_001",
+      "statement": "吸力超过 17000Pa",
+      "reason": "参数图最高真空度为第三档 17000Pa，超过该数值未经确认",
+      "source_ids": []
+    },
+    {
+      "claim_id": "claim_power_over_100w_001",
+      "statement": "功率超过 100W",
+      "reason": "参数图最高功率为第三档 100W，超过该数值未经确认",
+      "source_ids": []
+    },
+    {
+      "claim_id": "claim_all_levels_30_minutes_001",
+      "statement": "所有档位均可使用 30 分钟",
+      "reason": "参数图显示不同档位续航不同，不能合并宣传为所有档位 30 分钟",
+      "source_ids": []
+    },
+    {
+      "claim_id": "claim_specific_charging_time_001",
+      "statement": "充电时间为某个具体数值",
+      "reason": "当前资料未确认具体充电时间",
+      "source_ids": []
+    },
+    {
+      "claim_id": "claim_specific_8_nozzle_names_001",
+      "statement": "明确列出 8 种吸嘴/吹嘴的具体名称",
+      "reason": "当前资料未确认 8 种吸嘴/吹嘴的具体名称",
+      "source_ids": []
+    },
+    {
+      "claim_id": "claim_industrial_or_professional_cleaning_001",
+      "statement": "工业级吸力或专业级清洁效果",
+      "reason": "当前资料未确认工业级或专业级清洁效果",
+      "source_ids": []
+    },
+    {
+      "claim_id": "claim_change_product_appearance_001",
+      "statement": "擅自改变产品外观、比例、按钮位置或接口",
+      "reason": "产品外观必须以主图为准",
+      "source_ids": []
+    },
+    {
+      "claim_id": "claim_unconfirmed_accessory_combination_001",
+      "statement": "宣传未确认的配件组合",
+      "reason": "其他配件及具体组合方式以实际包装和说明书为准",
+      "source_ids": []
+    }
+  ],
+  "notes": "N01A-4 真实商品样例，仅用于验证 ProductBrief JSON 结构与引用关系。人工仍需最终批准事实口径。"
+}
