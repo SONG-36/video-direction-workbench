@@ -635,23 +635,149 @@ Pre-Run Gate includes budget approval, request/page caps, quota threshold, legal
 
 ## 18. Budget Gate
 
-Runtime Campaign in real execution must close the Budget Gate before any API call.
+Runtime Campaign in real execution must use the approved Budget Gate before any API call.
 
 Current status:
 
-- Budget Gate = Pending Approval
+- Budget Gate = Approved
+- Approval Date: 2026-08-07
+- Approved By: Andy
 
-This document does not approve:
+Approved runtime budget:
 
-- currency budget;
-- request budget;
-- per-endpoint request cap;
-- pagination page cap;
-- repeated snapshot cap;
-- minimum remaining quota threshold;
-- budget exception rule.
+| field | approved value | unit / meaning |
+|---|---|---|
+| campaign_credit_budget_max | 2000 | Scrape Creators credits. |
+| campaign_request_budget_max | 150 | Actual HTTP API requests. |
+| default_endpoint_request_cap | 5 | Actual HTTP requests per endpoint unless a task explicitly receives human-approved override. |
+| default_pagination_page_cap | 3 | Maximum pages requested during default pagination reconnaissance. |
+| repeated_snapshot_request_cap | 2 additional requests | Maximum additional repeated requests beyond the initial request when repeated snapshots are required or approved. |
+| minimum_remaining_quota_threshold | 22000 | Scrape Creators remaining-credit hard stop. |
+| additional_budget_requires_human_approval | true | Any increase requires explicit Andy approval. |
+| campaign_currency_budget_max | Unknown / Not Observable | Currency cost is not observable from current evidence. |
 
-If Budget Gate remains Pending, runtime calls must not begin.
+The 2026-08-07 observed available balance of 24,343 credits in 08 is a historical observed balance snapshot. It is not runtime configuration, a guaranteed starting balance, or a permanent account balance. Runtime must re-observe and record `credits_at_campaign_start` before the first real API request.
+
+Known provider explicit cost observations from 08:
+
+| endpoint_id | endpoint_name | provider_explicit_cost |
+|---|---|---|
+| TT-03 | User's Audience Demographics | 26 credits/request |
+| SHOP-02 | Shop Products | 1 credit/request |
+
+All other endpoint costs remain Unknown until observed. Do not assume all endpoints cost 1 credit or share fixed pricing.
+
+### Campaign Budget Stop
+
+If `campaign_observed_credit_spend >= 2000`, stop any new API request.
+
+Status:
+
+- Budget Exhausted — Human Review Required
+
+### Remaining Credit Hard Stop
+
+If `remaining_credits <= 22000`, stop any new API request.
+
+Status:
+
+- Minimum Remaining Credit Threshold Reached — Human Review Required
+
+The campaign budget stop and remaining-credit hard stop are independent. Whichever condition triggers first stops new requests. Do not continue because request budget remains available.
+
+### Request Budget Stop
+
+If `campaign_actual_request_count >= 150`, stop new API requests. The 150-request value is a ceiling, not a target. Do not run requests just to use the budget.
+
+Any increase requires explicit Andy approval.
+
+### Endpoint Request Cap
+
+The default endpoint request cap is 5 requests per endpoint. This is a maximum, not a required count.
+
+Correct logic:
+
+Evidence sufficient -> stop endpoint testing early.
+
+Incorrect logic:
+
+request count < 5 -> keep calling.
+
+If an endpoint reasonably requires more than 5 requests, pause that endpoint, record the reason, and require a human-approved task override.
+
+### Pagination Cap
+
+The default pagination cap is 3 pages for cursor or page based pagination reconnaissance.
+
+Purpose:
+
+- verify pagination actually works;
+- observe next token or page behavior;
+- observe duplicates across pages;
+- observe end state if naturally reached.
+
+It is not for collecting a full dataset. If page 1 or page 2 answers the pagination contract, stop early. If page 3 still cannot confirm full coverage, record `Coverage Beyond Default Pagination Cap = Unknown` and do not continue unlimited paging.
+
+### Repeated Snapshot Cap
+
+`repeated_snapshot_request_cap = 2 additional requests` means two repeat requests beyond the initial observation.
+
+Maximum observation pattern:
+
+initial request + repeat 1 + repeat 2 = 3 observations.
+
+If one repeat is enough to verify the needed behavior, stop early. Do not mechanically consume all repeat allowance.
+
+### Runtime Credit Observation
+
+For each runtime API request, if credits can be reliably observed, record:
+
+- credits_before
+- credits_after
+- observed_credit_delta
+- credit_delta_status
+
+Allowed `credit_delta_status` values:
+
+- Observed
+- Not Observable
+- Ambiguous
+- Conflicting
+
+Keep `provider_explicit_cost` separate from `runtime_observed_credit_delta`. Example: `provider_explicit_cost = 26` and `runtime_observed_credit_delta = 26` are two independent evidence records.
+
+### Unexpected Cost Safety Rule
+
+If any single request shows an obvious, unexplained, far-higher-than-expected credit delta, do not automatically repeat it.
+
+Immediately:
+
+1. Stop further testing for that endpoint.
+2. Preserve existing evidence.
+3. Mark a cost anomaly.
+4. Require human review.
+
+Governance flag:
+
+- unexpected_cost_requires_human_review = true
+
+No fixed anomaly threshold is approved in this document because provider prices are still unknown for most endpoints.
+
+### Blocked / Unavailable Budget Rule
+
+If an endpoint cannot reasonably run a positive test because of prerequisite, account or plan restriction, auth restriction, live object unavailable, provider feature unavailable, unsupported region, quota, or access gate, it can finish current reconnaissance with evidence-backed Blocked status.
+
+Do not spend credits trying to force 29 / 29 HTTP 200 results.
+
+### Budget And Capability Verdict Separation
+
+Budget exhaustion does not mean `Reject`.
+
+Correct expression:
+
+- Runtime testing incomplete due to budget gate.
+
+If evidence is insufficient, do not fabricate a Capability Verdict. Use `Blocked Pending Access` or the allowed evidence state from the recording contract.
 
 ## 19. Security
 

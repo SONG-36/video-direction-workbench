@@ -75,6 +75,7 @@ Future stages may cover:
 | Reconnaissance Report | Not Run | Cannot be complete until all 29 endpoints have final evidence-backed status. |
 | Request Surface Baseline | Draft — Observed Request Surface Complete / Pending Andy Review | Records observed routes, versions, UI parameters, required markers, enums, descriptions, credits, and provider notes for all 29 endpoints. |
 | Runtime Reconnaissance Execution Plan | Approved | Defines dependency waves, differentiated test depth, Seed Registry, eight result blocks, Identity Map, and completion criteria before live calls. |
+| Runtime Budget Gate | Approved | Sets credit, request, endpoint, pagination, repeated snapshot, remaining-credit, and human-approval stop limits. |
 | SIG code | Not Started | Not in this round. |
 | Scrape Creators API integration | Not Started | Not in this round. |
 

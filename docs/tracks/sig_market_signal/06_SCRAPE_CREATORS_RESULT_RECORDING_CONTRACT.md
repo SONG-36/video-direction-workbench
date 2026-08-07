@@ -220,6 +220,11 @@ Record:
 - endpoint_test_run_id
 - billable_observed
 - billing_unit_if_visible
+- provider_explicit_cost
+- credits_before
+- credits_after
+- observed_credit_delta
+- credit_delta_status
 - quota_header_or_ui_signal
 - remaining_quota_if_visible
 - rate_limit_signal
@@ -227,6 +232,15 @@ Record:
 - plan_gate_signal
 - unknowns
 - evidence_path
+
+Allowed `credit_delta_status` values:
+
+- Observed
+- Not Observable
+- Ambiguous
+- Conflicting
+
+`provider_explicit_cost` and `observed_credit_delta` are separate evidence. A provider UI cost note must not be treated as a runtime-observed debit unless the runtime balance delta is separately observed.
 
 Do not intentionally flood endpoints or attempt to trigger account blocks.
 

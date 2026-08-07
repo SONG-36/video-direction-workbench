@@ -15,29 +15,36 @@ Track C — SIG Market Signal Tool
 
 ## Active Work
 
-Runtime Reconnaissance Execution Plan approved; live runtime work remains blocked by Budget Gate.
+Runtime Reconnaissance Budget Gate approved; runtime task contract and RT-001 are not created.
 
 ## Current Goal
 
-Close the Budget Gate before creating runtime task contracts or executing Wave A.
+Create Runtime Task Contract before instantiating RT-001 for TT-17 Search by Keyword.
 
 ## Runtime Approval Status
 
 | Item | Status |
 |---|---|
 | Observed Request Surface | Complete / committed |
-| Runtime Reconnaissance Execution Plan | Approved |
+| Runtime Reconnaissance Execution Plan | Approved / committed |
+| Budget Gate | Approved |
 | Runtime API Calls | Not Started |
-| Budget Gate | Pending Approval |
-| Next Blocking Item | Budget Gate |
-| Next Execution Stage | Create Runtime Task Contract and begin Wave A only after Budget Gate approval. |
+| Runtime Task Contract | Not Created |
+| RT-001 | Not Created |
+| Next Step | Create `10_SCRAPE_CREATORS_RUNTIME_TASK_CONTRACT.md`, then instantiate RT-001 for TT-17 Search by Keyword. No API call should occur until the task contract and RT-001 pre-run checks are complete. |
 
-Do not start Runtime API calls before Budget Gate approval.
+Do not start Runtime API calls before the task contract and RT-001 pre-run checks are complete.
 
 ## Approved Decisions
 
 - SIG-D-017: Approve and archive SIG System Blueprint V0.1, Business Question And Evidence Map V0.1, and Data Source Capability Map V0.1 as the Track C architecture and reconnaissance baseline.
+- SIG-D-022: Require approved Campaign Budget And Safety Gate before live API calls.
+- SIG-D-023: Successful positive case is required only when prerequisite, authorization, plan access, quota, and safe legal input are available.
+- SIG-D-024: Replace binary repeated snapshot testing with Required / Conditional / Not Applicable plus rationale.
+- SIG-D-025: Do not persist raw HTTP requests; persist canonical redacted request evidence only.
+- SIG-D-026: Keep Test Status and Capability Verdict separate and require explicit legal mapping.
 - SIG-D-028: Runtime reconnaissance uses dependency waves, differentiated test depth, shared Seed Registry, standardized eight-block findings, and a final cross-endpoint identity map.
+- SIG-D-029: Approve the initial Scrape Creators Runtime Reconnaissance Campaign Budget Gate.
 
 ## Provisional Decisions
 
@@ -61,11 +68,6 @@ Do not start Runtime API calls before Budget Gate approval.
 - SIG-D-019: Execute in dependency order if needed, but require final evidence-backed status for every endpoint.
 - SIG-D-020: Preserve redacted request evidence, immutable raw response evidence, hashes, field observations, limitations, and capability verdicts.
 - SIG-D-021: Keep blocked, unavailable, rejected, and not-applicable endpoints in the final report.
-- SIG-D-022: Require approved Campaign Budget And Safety Gate before live API calls.
-- SIG-D-023: Successful positive case is required only when prerequisite, authorization, plan access, quota, and safe legal input are available.
-- SIG-D-024: Replace binary repeated snapshot testing with Required / Conditional / Not Applicable plus rationale.
-- SIG-D-025: Do not persist raw HTTP requests; persist canonical redacted request evidence only.
-- SIG-D-026: Keep Test Status and Capability Verdict separate and require explicit legal mapping.
 - SIG-D-027: Establish 08 as the canonical observed request-side evidence baseline for all 29 currently observed Scrape Creators endpoints.
 
 ## Current Facts
@@ -79,6 +81,7 @@ Do not start Runtime API calls before Budget Gate approval.
 - Product Details currently US-only observed.
 - Keyword/Hashtag/Top Search duplicate warning observed.
 - Runtime execution plan approved as 09 with Wave A-E ordering, Level 1-3 depth, Seed Registry, eight result blocks, and Cross-Endpoint Identity Map.
+- Budget Gate approved with 2000-credit, 150-request, 5-request endpoint, 3-page pagination, 2-additional-snapshot, and 22000 remaining-credit stop limits.
 - Runtime API response reconnaissance not started.
 
 ## Open Questions
@@ -96,8 +99,9 @@ Do not start Runtime API calls before Budget Gate approval.
 ## Blocked Items
 
 - No live API testing yet.
-- Live API testing remains blocked until Campaign Budget And Safety Gate receives real approved values.
-- Runtime Task Contract and Wave A execution must not begin before Budget Gate approval.
+- Runtime Task Contract is not created.
+- RT-001 is not created.
+- Runtime API calls must not begin until the task contract and RT-001 pre-run checks are complete.
 - SIG-P0 implementation blocked until reconnaissance results are available.
 - SIG-P0 field contract remains Draft.
 
@@ -115,9 +119,9 @@ Do not start Runtime API calls before Budget Gate approval.
 
 ## Next Review
 
-1. Close the Budget Gate with approved values before any live call.
-2. Create Runtime Task Contract only after Budget Gate approval.
-3. Begin Wave A only after Budget Gate approval and runtime task contract setup.
+1. Create `10_SCRAPE_CREATORS_RUNTIME_TASK_CONTRACT.md`.
+2. Instantiate RT-001 for TT-17 Search by Keyword.
+3. Complete RT-001 pre-run checks before any live call.
 4. Do not recollect basic request-surface data already captured in 08 unless a runtime discrepancy is found.
 
 ## Current Non-Goals

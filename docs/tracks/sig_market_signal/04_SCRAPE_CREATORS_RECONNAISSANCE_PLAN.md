@@ -34,18 +34,18 @@ These four may run first because they seed P0, but the campaign remains incomple
 
 ## 3A. Campaign Budget And Safety Gate
 
-Live API testing is blocked until Andy reviews and fills real approved budget, request, page, quota, and stop-limit values.
+Live API testing must stay within the approved budget, request, page, quota, and stop-limit values. The execution authority for the approved runtime budget is [09_SCRAPE_CREATORS_RUNTIME_RECONNAISSANCE_EXECUTION_PLAN.md](09_SCRAPE_CREATORS_RUNTIME_RECONNAISSANCE_EXECUTION_PLAN.md).
 
 | field | current value | note |
 |---|---|---|
-| campaign_currency_budget_max | Pending Andy Decision | Real currency ceiling is not known in this documentation round. |
-| campaign_request_budget_max | Pending Andy Decision | Total campaign request ceiling must be approved before live calls. |
-| default_endpoint_request_cap | Pending Andy Decision | Default per-endpoint request stop limit must be approved before live calls. |
-| default_pagination_page_cap | Pending Andy Decision | Default pagination depth must be approved before live calls. |
-| repeated_snapshot_request_cap | Pending Andy Decision | Repeated snapshot calls must have a separate approved cap. |
-| minimum_remaining_quota_threshold | Pending Andy Decision | Testing stops before visible quota becomes unsafe. |
-| over_budget_stop_rule | Pending Andy Decision | Live campaign must stop or pause when any approved ceiling is reached. |
-| budget_exception_approval | Pending Andy Decision | Any extra budget requires explicit human approval before additional calls. |
+| campaign_currency_budget_max | Unknown / Not Observable | Real currency ceiling is not observable from current evidence. |
+| campaign_credit_budget_max | 2000 Scrape Creators credits | Campaign credit-spend ceiling. |
+| campaign_request_budget_max | 150 actual HTTP API requests | Total campaign request ceiling. This is a ceiling, not a target. |
+| default_endpoint_request_cap | 5 actual HTTP requests per endpoint | Default per-endpoint cap unless human-approved task override exists. |
+| default_pagination_page_cap | 3 pages | Default pagination reconnaissance cap, not full dataset collection. |
+| repeated_snapshot_request_cap | 2 additional requests | Maximum repeats beyond the initial observation when repeated snapshots are required or approved. |
+| minimum_remaining_quota_threshold | 22000 Scrape Creators credits | Remaining-credit hard stop. |
+| additional_budget_requires_human_approval | true | Any extra budget requires explicit human approval before additional calls. |
 
 Stop immediately or pause the affected endpoint when any approved budget, request, pagination, quota, account-risk, legal, or plan boundary is reached. Budget exhaustion is a valid evidence-backed endpoint or campaign stop reason; it does not permit uncontrolled retries.
 

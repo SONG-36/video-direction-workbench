@@ -308,7 +308,7 @@ This log records decision history. It cannot override higher-level business sour
 ## SIG-D-022
 
 - Date: 2026-08-07
-- Status: Provisional
+- Status: Approved
 - Decision: Live Scrape Creators reconnaissance requires an approved Campaign Budget And Safety Gate before API calls begin.
 - Context: Complete reconnaissance must not become unlimited requests or uncontrolled cost.
 - Rationale: Budget, request, page, quota, and stop gates must be explicit before live testing.
@@ -316,12 +316,13 @@ This log records decision history. It cannot override higher-level business sour
 - Consequences: Live API testing remains blocked until real approved budget values are filled.
 - Affected Documents: [04_SCRAPE_CREATORS_RECONNAISSANCE_PLAN.md](04_SCRAPE_CREATORS_RECONNAISSANCE_PLAN.md), [07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md](07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md), [CURRENT_STATUS.md](CURRENT_STATUS.md)
 - Supersedes: None
-- Approved By: Pending Andy Review
+- Approved By: Andy
+- Approval Date: 2026-08-07
 
 ## SIG-D-023
 
 - Date: 2026-08-07
-- Status: Provisional
+- Status: Approved
 - Decision: A successful positive case is required only when prerequisite, authorization, plan access, quota, and safe legal input are available; otherwise evidence-backed blocked or unavailable status can complete current reconnaissance for that endpoint.
 - Context: Some endpoints may require inaccessible seed entities, plan permissions, quota, or human approval.
 - Rationale: Complete reconnaissance requires evidence-backed status for every endpoint, not forced unsafe or impossible calls.
@@ -329,12 +330,13 @@ This log records decision history. It cannot override higher-level business sour
 - Consequences: Blocked, unavailable, not applicable, or deferred endpoints can complete current reconnaissance only with evidence, reason, remaining unknowns, and mapped verdict.
 - Affected Documents: [04_SCRAPE_CREATORS_RECONNAISSANCE_PLAN.md](04_SCRAPE_CREATORS_RECONNAISSANCE_PLAN.md), [05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md](05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md), [07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md](07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md)
 - Supersedes: None
-- Approved By: Pending Andy Review
+- Approved By: Andy
+- Approval Date: 2026-08-07
 
 ## SIG-D-024
 
 - Date: 2026-08-07
-- Status: Provisional
+- Status: Approved
 - Decision: Replace binary repeated snapshot testing with Required / Conditional / Not Applicable and require an endpoint-specific rationale.
 - Context: Repeated calls are not equally useful for every endpoint and must stay inside budget and quota limits.
 - Rationale: Snapshot testing should be tied to metric volatility, live behavior, changing feeds, or first-response evidence.
@@ -342,12 +344,13 @@ This log records decision history. It cannot override higher-level business sour
 - Consequences: The endpoint matrix records `snapshot_retest_requirement` and `snapshot_retest_rationale` for all 29 endpoints.
 - Affected Documents: [05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md](05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md), [04_SCRAPE_CREATORS_RECONNAISSANCE_PLAN.md](04_SCRAPE_CREATORS_RECONNAISSANCE_PLAN.md)
 - Supersedes: None
-- Approved By: Pending Andy Review
+- Approved By: Andy
+- Approval Date: 2026-08-07
 
 ## SIG-D-025
 
 - Date: 2026-08-07
-- Status: Provisional
+- Status: Approved
 - Decision: Do not persist raw HTTP requests. Persist only canonical redacted request evidence; raw responses remain protected separately and must undergo sensitive-data review before any Git decision.
 - Context: Requests can carry API keys, authorization headers, cookies, query-string secrets, signatures, and account-control material.
 - Rationale: Audit value can be preserved through canonical redacted request evidence without storing secret-bearing raw requests.
@@ -355,12 +358,13 @@ This log records decision history. It cannot override higher-level business sour
 - Consequences: Current contracts use `canonical_redacted_request_artifact_path` and `canonical_request_fingerprint`, while raw responses remain separate and protected.
 - Affected Documents: [06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md](06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md), [07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md](07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md)
 - Supersedes: SIG-D-020 partial refinement. SIG-D-020 remains active for response evidence, hashes, field observations, limitations, and verdicts.
-- Approved By: Pending Andy Review
+- Approved By: Andy
+- Approval Date: 2026-08-07
 
 ## SIG-D-026
 
 - Date: 2026-08-07
-- Status: Provisional
+- Status: Approved
 - Decision: Test Status and Capability Verdict remain separate and must follow an explicit legal mapping before the campaign can be marked complete.
 - Context: Endpoint execution states and business capability decisions answer different questions.
 - Rationale: Final capability verdicts must not contain temporary test or governance statuses such as Pending Test, Not Run, Endpoint Unavailable, Not Applicable, or Deferred.
@@ -368,7 +372,8 @@ This log records decision history. It cannot override higher-level business sour
 - Consequences: The result recording contract defines allowed Test Status to Capability Verdict combinations, and the final report includes a consistency check.
 - Affected Documents: [06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md](06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md), [07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md](07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md), [CURRENT_STATUS.md](CURRENT_STATUS.md)
 - Supersedes: None
-- Approved By: Pending Andy Review
+- Approved By: Andy
+- Approval Date: 2026-08-07
 
 ## SIG-D-027
 
@@ -393,6 +398,20 @@ This log records decision history. It cannot override higher-level business sour
 - Alternatives Considered: Execute endpoints in flat numeric order; test every endpoint at identical depth; record free-form notes without a shared seed or identity map.
 - Consequences: Runtime testing must follow the execution plan unless Andy explicitly approves a change, and campaign completion requires endpoint conclusions plus final identity and verdict artifacts.
 - Affected Documents: [09_SCRAPE_CREATORS_RUNTIME_RECONNAISSANCE_EXECUTION_PLAN.md](09_SCRAPE_CREATORS_RUNTIME_RECONNAISSANCE_EXECUTION_PLAN.md), [05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md](05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md), [CURRENT_STATUS.md](CURRENT_STATUS.md), [README.md](README.md)
+- Supersedes: None
+- Approved By: Andy
+- Approval Date: 2026-08-07
+
+## SIG-D-029
+
+- Date: 2026-08-07
+- Status: Approved
+- Decision: Approve the initial Scrape Creators Runtime Reconnaissance Campaign Budget Gate with campaign_credit_budget_max = 2000 credits, campaign_request_budget_max = 150 requests, default_endpoint_request_cap = 5 requests, default_pagination_page_cap = 3 pages, repeated_snapshot_request_cap = 2 additional requests, minimum_remaining_quota_threshold = 22000 credits, additional_budget_requires_human_approval = true, and campaign_currency_budget_max = Unknown / Not Observable.
+- Context: The observed Scrape Creators balance snapshot on 2026-08-07 was 24,343 credits. Known endpoint prices are heterogeneous: TT-03 is explicitly shown as 26 credits/request and SHOP-02 as 1 credit/request, while most endpoint costs remain unknown.
+- Rationale: The first full 29-endpoint reconnaissance requires enough budget for Level 1 coverage plus selective Level 2/3 testing while preventing uncontrolled credit consumption.
+- Alternatives Considered: Keep Budget Gate pending; approve only request count without credit limits; use the historical 24,343-credit snapshot as runtime configuration.
+- Consequences: The limits are ceilings, not targets. Tests must stop early when sufficient evidence is obtained. Any limit increase requires explicit Andy approval. Runtime must re-observe the actual starting credit balance. Campaign stops when either campaign budget, request budget, or minimum remaining-credit threshold is reached. Unexpected high-cost behavior requires human review.
+- Affected Documents: [09_SCRAPE_CREATORS_RUNTIME_RECONNAISSANCE_EXECUTION_PLAN.md](09_SCRAPE_CREATORS_RUNTIME_RECONNAISSANCE_EXECUTION_PLAN.md), [04_SCRAPE_CREATORS_RECONNAISSANCE_PLAN.md](04_SCRAPE_CREATORS_RECONNAISSANCE_PLAN.md), [06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md](06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md), [CURRENT_STATUS.md](CURRENT_STATUS.md), [README.md](README.md)
 - Supersedes: None
 - Approved By: Andy
 - Approval Date: 2026-08-07
