@@ -11,19 +11,33 @@
 
 ## Current Track
 
-Track C — SIG Market Signal System
+Track C — SIG Market Signal Tool
 
 ## Active Work
 
-Persist Scrape Creators observed request-side baseline before runtime API reconnaissance.
+Runtime Reconnaissance Execution Plan approved; live runtime work remains blocked by Budget Gate.
 
 ## Current Goal
 
-Freeze all currently collected 29-endpoint request-surface evidence so runtime testing can focus only on real behavior and responses.
+Close the Budget Gate before creating runtime task contracts or executing Wave A.
+
+## Runtime Approval Status
+
+| Item | Status |
+|---|---|
+| Observed Request Surface | Complete / committed |
+| Runtime Reconnaissance Execution Plan | Approved |
+| Runtime API Calls | Not Started |
+| Budget Gate | Pending Approval |
+| Next Blocking Item | Budget Gate |
+| Next Execution Stage | Create Runtime Task Contract and begin Wave A only after Budget Gate approval. |
+
+Do not start Runtime API calls before Budget Gate approval.
 
 ## Approved Decisions
 
 - SIG-D-017: Approve and archive SIG System Blueprint V0.1, Business Question And Evidence Map V0.1, and Data Source Capability Map V0.1 as the Track C architecture and reconnaissance baseline.
+- SIG-D-028: Runtime reconnaissance uses dependency waves, differentiated test depth, shared Seed Registry, standardized eight-block findings, and a final cross-endpoint identity map.
 
 ## Provisional Decisions
 
@@ -64,6 +78,7 @@ Freeze all currently collected 29-endpoint request-surface evidence so runtime t
 - SHOP-02 = 1 credit/request observed.
 - Product Details currently US-only observed.
 - Keyword/Hashtag/Top Search duplicate warning observed.
+- Runtime execution plan approved as 09 with Wave A-E ordering, Level 1-3 depth, Seed Registry, eight result blocks, and Cross-Endpoint Identity Map.
 - Runtime API response reconnaissance not started.
 
 ## Open Questions
@@ -81,11 +96,8 @@ Freeze all currently collected 29-endpoint request-surface evidence so runtime t
 ## Blocked Items
 
 - No live API testing yet.
-- Live API testing remains blocked until:
-  1. SIG-D-022 to SIG-D-026 are reviewed.
-  2. Campaign Budget And Safety Gate receives real approved values.
-  3. Reconnaissance documents pass final review.
-  4. Track C documentation baseline is committed.
+- Live API testing remains blocked until Campaign Budget And Safety Gate receives real approved values.
+- Runtime Task Contract and Wave A execution must not begin before Budget Gate approval.
 - SIG-P0 implementation blocked until reconnaissance results are available.
 - SIG-P0 field contract remains Draft.
 
@@ -103,10 +115,10 @@ Freeze all currently collected 29-endpoint request-surface evidence so runtime t
 
 ## Next Review
 
-1. Review 08 for transcription accuracy.
-2. Approve or correct SIG-D-027.
-3. Do not recollect basic request-surface data.
-4. Then begin runtime endpoint validation.
+1. Close the Budget Gate with approved values before any live call.
+2. Create Runtime Task Contract only after Budget Gate approval.
+3. Begin Wave A only after Budget Gate approval and runtime task contract setup.
+4. Do not recollect basic request-surface data already captured in 08 unless a runtime discrepancy is found.
 
 ## Current Non-Goals
 
@@ -119,7 +131,7 @@ Freeze all currently collected 29-endpoint request-surface evidence so runtime t
 - No ResearchTask changes.
 - No K-P0 changes.
 - No N03 work.
-- No Git commit.
+- No unapproved Git commit.
 
 ## Last Updated
 

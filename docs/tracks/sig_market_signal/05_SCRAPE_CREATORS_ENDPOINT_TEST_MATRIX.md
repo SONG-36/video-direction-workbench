@@ -28,6 +28,7 @@ Observed Request Surface Source: [08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md
 During runtime reconnaissance:
 
 - request route and UI parameter names should come from 08;
+- dependency waves, test depth, seed registry, eight result blocks, and cross-endpoint identity map should follow [09_SCRAPE_CREATORS_RUNTIME_RECONNAISSANCE_EXECUTION_PLAN.md](09_SCRAPE_CREATORS_RUNTIME_RECONNAISSANCE_EXECUTION_PLAN.md);
 - runtime tests validate behavior, not rediscover basic endpoint names;
 - any runtime conflict with 08 must be recorded as a provider-surface change or runtime discrepancy;
 - 08 remains observed evidence, while runtime evidence has higher authority for actual callable behavior.

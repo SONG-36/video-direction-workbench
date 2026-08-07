@@ -51,11 +51,14 @@ Recommended entry point:
 7. [tracks/sig_market_signal/05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md](tracks/sig_market_signal/05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md)
 8. [tracks/sig_market_signal/06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md](tracks/sig_market_signal/06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md)
 9. [tracks/sig_market_signal/08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md](tracks/sig_market_signal/08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md)
-10. [tracks/sig_market_signal/07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md](tracks/sig_market_signal/07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md)
-11. [tracks/sig_market_signal/DECISION_LOG.md](tracks/sig_market_signal/DECISION_LOG.md)
-12. [tracks/sig_market_signal/CURRENT_STATUS.md](tracks/sig_market_signal/CURRENT_STATUS.md)
+10. [tracks/sig_market_signal/09_SCRAPE_CREATORS_RUNTIME_RECONNAISSANCE_EXECUTION_PLAN.md](tracks/sig_market_signal/09_SCRAPE_CREATORS_RUNTIME_RECONNAISSANCE_EXECUTION_PLAN.md)
+11. [tracks/sig_market_signal/07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md](tracks/sig_market_signal/07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md)
+12. [tracks/sig_market_signal/DECISION_LOG.md](tracks/sig_market_signal/DECISION_LOG.md)
+13. [tracks/sig_market_signal/CURRENT_STATUS.md](tracks/sig_market_signal/CURRENT_STATUS.md)
 
 The request surface baseline records observed request-side provider evidence for all 29 Scrape Creators endpoints before runtime API reconnaissance.
+
+The runtime reconnaissance execution plan defines dependency waves, differentiated test depth, Seed Registry, standardized result blocks, and cross-endpoint identity mapping before any live API campaign.
 
 Approved Track C V0.1 archive:
 

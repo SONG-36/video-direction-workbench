@@ -44,6 +44,7 @@ Future stages may cover:
 | [06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md](06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md) | Evidence recording, redaction, hashing, and verdict contract for later tests. | Evidence Recording Contract |
 | [07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md](07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md) | Final report template for the full reconnaissance campaign. | Working Test Report |
 | [08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md](08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md) | Observed request-side provider evidence baseline for all 29 endpoints. | Observed Request Evidence Baseline |
+| [09_SCRAPE_CREATORS_RUNTIME_RECONNAISSANCE_EXECUTION_PLAN.md](09_SCRAPE_CREATORS_RUNTIME_RECONNAISSANCE_EXECUTION_PLAN.md) | Runtime execution order, test depth, seed registry, identity map, and completion criteria for the 29-endpoint campaign. | Runtime Execution Plan |
 | [DECISION_LOG.md](DECISION_LOG.md) | Track C decision history and provisional decisions. | Working Record |
 | [CURRENT_STATUS.md](CURRENT_STATUS.md) | Current Track C work state and next review. | Working Record |
 
@@ -73,6 +74,7 @@ Future stages may cover:
 | Result Recording Contract | Draft, Pending Review | Defines request, raw response, redacted evidence, hash, and verdict records. |
 | Reconnaissance Report | Not Run | Cannot be complete until all 29 endpoints have final evidence-backed status. |
 | Request Surface Baseline | Draft — Observed Request Surface Complete / Pending Andy Review | Records observed routes, versions, UI parameters, required markers, enums, descriptions, credits, and provider notes for all 29 endpoints. |
+| Runtime Reconnaissance Execution Plan | Approved | Defines dependency waves, differentiated test depth, Seed Registry, eight result blocks, Identity Map, and completion criteria before live calls. |
 | SIG code | Not Started | Not in this round. |
 | Scrape Creators API integration | Not Started | Not in this round. |
 
@@ -118,8 +120,9 @@ A complete 29-endpoint campaign means every endpoint receives an evidence-backed
 7. Review the endpoint test matrix.
 8. Review the result recording contract.
 9. Review the request surface baseline before API testing.
-10. Check the reconnaissance report template.
-11. Check the decision log and current status.
+10. Review the runtime reconnaissance execution plan before API testing.
+11. Check the reconnaissance report template.
+12. Check the decision log and current status.
 
 ## Non-Goals
 

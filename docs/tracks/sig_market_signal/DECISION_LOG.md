@@ -382,3 +382,17 @@ This log records decision history. It cannot override higher-level business sour
 - Affected Documents: [08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md](08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md), [05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md](05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md), [README.md](README.md), [CURRENT_STATUS.md](CURRENT_STATUS.md)
 - Supersedes: None
 - Approved By: Pending Andy Review
+
+## SIG-D-028
+
+- Date: 2026-08-07
+- Status: Approved
+- Decision: Runtime reconnaissance uses dependency waves, differentiated test depth, shared Seed Registry, standardized eight-block findings, and a final cross-endpoint identity map.
+- Context: The request-side baseline is available, but live runtime testing still needs a concrete execution plan before any API campaign begins.
+- Rationale: Dependency waves avoid fabricated seeds, differentiated depth limits cost and risk, standardized result blocks keep findings comparable, and the identity map makes cross-endpoint linkage reviewable.
+- Alternatives Considered: Execute endpoints in flat numeric order; test every endpoint at identical depth; record free-form notes without a shared seed or identity map.
+- Consequences: Runtime testing must follow the execution plan unless Andy explicitly approves a change, and campaign completion requires endpoint conclusions plus final identity and verdict artifacts.
+- Affected Documents: [09_SCRAPE_CREATORS_RUNTIME_RECONNAISSANCE_EXECUTION_PLAN.md](09_SCRAPE_CREATORS_RUNTIME_RECONNAISSANCE_EXECUTION_PLAN.md), [05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md](05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md), [CURRENT_STATUS.md](CURRENT_STATUS.md), [README.md](README.md)
+- Supersedes: None
+- Approved By: Andy
+- Approval Date: 2026-08-07
