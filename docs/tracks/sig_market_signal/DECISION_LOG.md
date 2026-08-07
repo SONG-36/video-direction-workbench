@@ -369,3 +369,16 @@ This log records decision history. It cannot override higher-level business sour
 - Affected Documents: [06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md](06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md), [07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md](07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md), [CURRENT_STATUS.md](CURRENT_STATUS.md)
 - Supersedes: None
 - Approved By: Pending Andy Review
+
+## SIG-D-027
+
+- Date: 2026-08-07
+- Status: Provisional
+- Decision: Establish `08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md` as the canonical observed request-side evidence baseline for all 29 currently observed Scrape Creators endpoints.
+- Context: Andy manually collected the provider endpoint routes, UI parameter surfaces, visible required markers, enums, descriptions, and selected cost/support notes before runtime API reconnaissance.
+- Rationale: Future work should validate runtime behavior instead of repeatedly rediscovering provider request-surface facts.
+- Alternatives Considered: Leave observed request-side facts spread across chat context and require recollection before runtime testing.
+- Consequences: Runtime reconnaissance may supersede or refine observed request assumptions, but must record discrepancies rather than silently rewriting evidence history.
+- Affected Documents: [08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md](08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md), [05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md](05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md), [README.md](README.md), [CURRENT_STATUS.md](CURRENT_STATUS.md)
+- Supersedes: None
+- Approved By: Pending Andy Review

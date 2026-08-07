@@ -43,6 +43,7 @@ Future stages may cover:
 | [05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md](05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md) | Endpoint-by-endpoint test matrix for all observed Scrape Creators endpoints. | Test Matrix |
 | [06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md](06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md) | Evidence recording, redaction, hashing, and verdict contract for later tests. | Evidence Recording Contract |
 | [07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md](07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md) | Final report template for the full reconnaissance campaign. | Working Test Report |
+| [08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md](08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md) | Observed request-side provider evidence baseline for all 29 endpoints. | Observed Request Evidence Baseline |
 | [DECISION_LOG.md](DECISION_LOG.md) | Track C decision history and provisional decisions. | Working Record |
 | [CURRENT_STATUS.md](CURRENT_STATUS.md) | Current Track C work state and next review. | Working Record |
 
@@ -71,6 +72,7 @@ Future stages may cover:
 | Endpoint Test Matrix | Draft, Pending Review | All 29 endpoints start as Not Run. |
 | Result Recording Contract | Draft, Pending Review | Defines request, raw response, redacted evidence, hash, and verdict records. |
 | Reconnaissance Report | Not Run | Cannot be complete until all 29 endpoints have final evidence-backed status. |
+| Request Surface Baseline | Draft — Observed Request Surface Complete / Pending Andy Review | Records observed routes, versions, UI parameters, required markers, enums, descriptions, credits, and provider notes for all 29 endpoints. |
 | SIG code | Not Started | Not in this round. |
 | Scrape Creators API integration | Not Started | Not in this round. |
 
@@ -112,7 +114,12 @@ A complete 29-endpoint campaign means every endpoint receives an evidence-backed
 3. Review the business question and evidence map.
 4. Review the data source capability map.
 5. Review the SIG-P0 detailed contract framework.
-6. Check the decision log and current status.
+6. Review the reconnaissance plan.
+7. Review the endpoint test matrix.
+8. Review the result recording contract.
+9. Review the request surface baseline before API testing.
+10. Check the reconnaissance report template.
+11. Check the decision log and current status.
 
 ## Non-Goals
 

@@ -11,15 +11,15 @@
 
 ## Current Track
 
-Track C - SIG Market Signal System
+Track C — SIG Market Signal System
 
 ## Active Work
 
-Final reconnaissance governance rework before live API testing.
+Persist Scrape Creators observed request-side baseline before runtime API reconnaissance.
 
 ## Current Goal
 
-Freeze budget gate, blocked-endpoint handling, snapshot retest policy, redacted request evidence, and status/verdict mapping.
+Freeze all currently collected 29-endpoint request-surface evidence so runtime testing can focus only on real behavior and responses.
 
 ## Approved Decisions
 
@@ -52,6 +52,19 @@ Freeze budget gate, blocked-endpoint handling, snapshot retest policy, redacted 
 - SIG-D-024: Replace binary repeated snapshot testing with Required / Conditional / Not Applicable plus rationale.
 - SIG-D-025: Do not persist raw HTTP requests; persist canonical redacted request evidence only.
 - SIG-D-026: Keep Test Status and Capability Verdict separate and require explicit legal mapping.
+- SIG-D-027: Establish 08 as the canonical observed request-side evidence baseline for all 29 currently observed Scrape Creators endpoints.
+
+## Current Facts
+
+- 29 endpoint routes observed.
+- 29 UI parameter surfaces observed.
+- v1/v2/v3 version distribution recorded.
+- partial enums recorded.
+- TT-03 = 26 credits/request observed.
+- SHOP-02 = 1 credit/request observed.
+- Product Details currently US-only observed.
+- Keyword/Hashtag/Top Search duplicate warning observed.
+- Runtime API response reconnaissance not started.
 
 ## Open Questions
 
@@ -90,14 +103,10 @@ Freeze budget gate, blocked-endpoint handling, snapshot retest policy, redacted 
 
 ## Next Review
 
-1. Review Campaign Budget And Safety Gate structure.
-2. Andy fills and approves real cost/request/quota limits.
-3. Review snapshot retest classifications across all 29 endpoints.
-4. Review canonical redacted request policy.
-5. Review Test Status → Capability Verdict mapping.
-6. Approve or reject SIG-D-022 to SIG-D-026.
-7. After approval, create Git baseline commit.
-8. Only then begin live API reconnaissance.
+1. Review 08 for transcription accuracy.
+2. Approve or correct SIG-D-027.
+3. Do not recollect basic request-surface data.
+4. Then begin runtime endpoint validation.
 
 ## Current Non-Goals
 

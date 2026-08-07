@@ -6,7 +6,7 @@
 - Scope: Documentation map, authority levels, conflict handling, and current implementation boundaries.
 - Depends On: [00_BUSINESS_FLOW.md](00_BUSINESS_FLOW.md), [01_NODE_CONTRACTS.md](01_NODE_CONTRACTS.md), [02_GUIDED_IMPLEMENTATION_PLAN.md](02_GUIDED_IMPLEMENTATION_PLAN.md), [03_PARALLEL_DEVELOPMENT_TRACKS.md](03_PARALLEL_DEVELOPMENT_TRACKS.md), [04_KNOWLEDGE_CATALOG_CONTRACT.md](04_KNOWLEDGE_CATALOG_CONTRACT.md), [05_MARKET_SIGNAL_TOOL_CONTRACT.md](05_MARKET_SIGNAL_TOOL_CONTRACT.md), [06_CROSS_TRACK_MESSAGE_CONTRACTS.md](06_CROSS_TRACK_MESSAGE_CONTRACTS.md)
 - Supersedes: None
-- Last Updated: 2026-08-06
+- Last Updated: 2026-08-07
 - Approved By: Pending Andy Review
 
 ## Purpose
@@ -50,9 +50,12 @@ Recommended entry point:
 6. [tracks/sig_market_signal/04_SCRAPE_CREATORS_RECONNAISSANCE_PLAN.md](tracks/sig_market_signal/04_SCRAPE_CREATORS_RECONNAISSANCE_PLAN.md)
 7. [tracks/sig_market_signal/05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md](tracks/sig_market_signal/05_SCRAPE_CREATORS_ENDPOINT_TEST_MATRIX.md)
 8. [tracks/sig_market_signal/06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md](tracks/sig_market_signal/06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md)
-9. [tracks/sig_market_signal/07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md](tracks/sig_market_signal/07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md)
-10. [tracks/sig_market_signal/DECISION_LOG.md](tracks/sig_market_signal/DECISION_LOG.md)
-11. [tracks/sig_market_signal/CURRENT_STATUS.md](tracks/sig_market_signal/CURRENT_STATUS.md)
+9. [tracks/sig_market_signal/08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md](tracks/sig_market_signal/08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md)
+10. [tracks/sig_market_signal/07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md](tracks/sig_market_signal/07_SCRAPE_CREATORS_RECONNAISSANCE_REPORT.md)
+11. [tracks/sig_market_signal/DECISION_LOG.md](tracks/sig_market_signal/DECISION_LOG.md)
+12. [tracks/sig_market_signal/CURRENT_STATUS.md](tracks/sig_market_signal/CURRENT_STATUS.md)
+
+The request surface baseline records observed request-side provider evidence for all 29 Scrape Creators endpoints before runtime API reconnaissance.
 
 Approved Track C V0.1 archive:
 

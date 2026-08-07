@@ -4,7 +4,7 @@
 - Status: Draft
 - Authority: Test Matrix
 - Scope: Complete test matrix for all 29 currently observed Scrape Creators endpoints.
-- Depends On: [04_SCRAPE_CREATORS_RECONNAISSANCE_PLAN.md](04_SCRAPE_CREATORS_RECONNAISSANCE_PLAN.md), [02_DATA_SOURCE_CAPABILITY_MAP.md](02_DATA_SOURCE_CAPABILITY_MAP.md), [06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md](06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md)
+- Depends On: [04_SCRAPE_CREATORS_RECONNAISSANCE_PLAN.md](04_SCRAPE_CREATORS_RECONNAISSANCE_PLAN.md), [02_DATA_SOURCE_CAPABILITY_MAP.md](02_DATA_SOURCE_CAPABILITY_MAP.md), [06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md](06_SCRAPE_CREATORS_RESULT_RECORDING_CONTRACT.md), [08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md](08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md)
 - Supersedes: None
 - Last Updated: 2026-08-07
 - Approved By: Pending Andy Review
@@ -22,6 +22,15 @@ All endpoints start with `current_test_status: Not Run` and `final_capability_ve
 - `Not Applicable`: repeated snapshot testing is not useful for the endpoint's current reconnaissance question.
 
 `snapshot_retest_rationale` must explain the endpoint-specific reason. It must not be a mechanical Yes / No field. Raw evidence required means canonical redacted request evidence, raw response evidence, redacted response evidence, and field observations; raw HTTP requests must not be persisted.
+
+Observed Request Surface Source: [08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md](08_SCRAPE_CREATORS_REQUEST_SURFACE_BASELINE.md).
+
+During runtime reconnaissance:
+
+- request route and UI parameter names should come from 08;
+- runtime tests validate behavior, not rediscover basic endpoint names;
+- any runtime conflict with 08 must be recorded as a provider-surface change or runtime discrepancy;
+- 08 remains observed evidence, while runtime evidence has higher authority for actual callable behavior.
 
 ## Overview Matrix
 
